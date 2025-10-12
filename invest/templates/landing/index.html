@@ -1,884 +1,556 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="zxx" class="js">
-	
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<!doctype html>
+<html lang="en">
 <head>
-    <script async src="{% static 'landing/assets/js/f2738.txt' %}?client=ca-pub-7237454582257940" crossorigin="anonymous"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lunaro Capital | Trading Made Easy</title>
 
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Best investment firm with a crosscutting technology that leverages AI and Web3 to power it's trading">
+  <!-- Tailwind CDN (no build step needed) -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Title -->
-    <title>CryptoCraft | Home</title>
-
-    <!-- Styles (Converted to Django Static Paths) -->
-    <link rel="stylesheet" href="{% static 'landing/assets/css/vendor.bundle.css' %}">
-    <link rel="stylesheet" href="{% static 'landing/assets/css/LineIcons.css' %}">
-    <link rel="stylesheet" href="{% static 'landing/assets/css/swiper.min.css' %}">
-    <link rel="stylesheet" href="{% static 'landing/assets/css/magnific-popup.css' %}">
-    <link rel="stylesheet" href="{% static 'landing/assets/css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'landing/assets/css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'landing/assets/css/theme.css' %}">
-
-    <!-- Optional Script from Static (if available) -->
-    <script type="text/javascript" src="{% static 'landing/assets/js/translate.js' %}"></script>
+  <!-- Small meta styling -->
+  <meta name="description" content="Lunaro Capital — Trading Made Easy" />
+  <style>
+    /* tiny extra styles for badge positions */
+    .ticker-item { min-width: 12rem; }
+    .hero-overlay { background: linear-gradient(90deg, rgba(2,6,23,0.55), rgba(2,6,23,0.08)); }
+  </style>
 </head>
-<body>
+<body class="antialiased text-slate-800 bg-slate-50">
 
-		<!-- Header -->
-		<header class="site-header header-s1 is-sticky">
- 
-			<!-- Topbar -->
-			<div class="topbar">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-6">
-							
-						</div>
-						<div class="col-sm-6 al-right">
-							<ul class="top-nav">
-								
-								<li><a href="{% url 'signin' %}">Login</a></li>
-								<li><a href="{% url 'signup' %}">Register</a></li>
-							</ul>
-						</div>
-					</div>
-          
-				</div>
-			</div>
+  <!-- NAV -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-md bg-sky-600 flex items-center justify-center text-white font-bold">L</div>
+        <div>
+          <div class="text-lg font-bold">Lunaro Capital</div>
+          <div class="text-xs text-slate-500">Investments & Trading</div>
+        </div>
+      </a>
 
-			<!-- End Topbar -->
-			<!-- Navbar -->
-			<div class="navbar navbar-primary" style="background-color:black;color:white; ">
-				<div class="container relative">
-					<!-- Logo -->
-					
-						<img  class="logo logo-dark" alt="logo" 
-						src="/static/landing/assets/images/CrownCrypto.jpg" style="height:130px; width:300px;margin-bottom:-50px;" >
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            
-				
-					<!-- #end Logo -->
-					<div class="navbar-header">
-						
-						
-					</div>
-					<!-- MainNav -->
-					<nav class="navbar-collapse collapse" id="mainnav"style="color:white; ">
-						<ul class="nav navbar-nav">
-							<li><a href="{% url 'home' %}">Home</a>
-							</li>
-							<li><a href="{% url 'about' %}">About Us</a>
-							</li>
-							
-							<!--<li><a href="package">Investment Offer</a></li>-->
-							
-							<li><a href="{% url 'faq' %}">Frequently Asked</a></li>
-							<li><a href="{% url 'contact' %}">Contact Us</a></li>
-							<li><a href="{% url 'signin' %}">Login</a></li>
-								<li><a href="{% url 'signup' %}">Register</a></li>
-									
-						</ul>
-					</nav>
-					<!-- #end MainNav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="{% url 'home' %}" class="hover:text-sky-600">Home</a>
+        <a href="{% url 'about' %}" class="hover:text-sky-600">About Us</a>
+        <a href="{% url 'packages' %}" class="hover:text-sky-600">Investment Plans</a>
+        <a href="{% url 'contact' %}" class="hover:text-sky-600">Contact</a>
+        <a href="{% url 'signup' %}" class="px-4 py-2 bg-sky-600 text-white rounded-md">Register</a>
+      </nav>
 
+      <!-- mobile toggle -->
+      <button id="navToggle" class="md:hidden p-2 rounded-md bg-slate-100">☰</button>
+    </div>
 
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden px-6 pb-4">
+      <a class="block py-2" href="{% url 'home' %}">Home</a>
+      <a class="block py-2" href="{% url 'about' %}">About Us</a>
+      <a class="block py-2" href="{% url 'packages' %}">Investment Plans</a>
+      <a class="block py-2" href="{% url 'contact' %}">Contact</a>
+      <a class="block py-2 font-semibold text-sky-600" href="{% url 'signup' %}">Register</a>
+    </div>
+  </header>
 
+  <!-- HERO -->
+<main>
+  <section class="relative bg-gray-900 overflow-hidden">
+    <!-- Dark overlay -->
+    <div class="hero-overlay absolute inset-0 bg-gray-900/80"></div>
 
+    <div class="max-w-7xl mx-auto px-6 py-20 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left Text Section -->
+      <div>
+        <h1 id="heroTitle"
+            class="text-4xl sm:text-5xl font-extrabold text-white drop-shadow-lg transition-colors duration-300">
+        </h1>
 
+        <p class="mt-4 text-slate-100 max-w-xl">
+          Lunaro Capital gives you access to forex, commodities, stocks and cryptocurrency trading with secure storage and 24/7 support.
+          Join Lunaro Capital today and be a benficiary of the tech.
+          Our platforms´ technologies are designed to provide a practical, powerful, and efficient trading experience. Our forex trading experts trades with precision, speed, and safety. 
+          Empowering our clients to achieve 99.99% ROI without delay.
+        </p>
 
-			<!-- End Navbar -->
-			
+        <div class="mt-6 flex gap-4">
+          <a href="{% url 'signup' %}"
+             class="inline-block bg-white text-sky-600 px-5 py-3 rounded-md font-semibold shadow hover:bg-sky-600 hover:text-white transition-all duration-300">
+            Get Started
+          </a>
+          <a href="{% url 'signin' %}"
+             class="inline-block text-white border border-white px-5 py-3 rounded-md hover:bg-white hover:text-gray-900 transition-all duration-300">
+            Access Account
+          </a>
+        </div>
 
+        <div class="mt-8 grid grid-cols-3 gap-4 text-sm text-slate-200">
+          <div>
+            <div class="text-2xl font-bold">350+</div>
+            <div class="text-xs">Instruments</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold">24/7</div>
+            <div class="text-xs">Support</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold">Insurance</div>
+            <div class="text-xs">Protection</div>
+          </div>
+        </div>
+      </div>
 
+      <!-- Right Image Section -->
+      <div class="relative">
+        <div class="rounded-xl overflow-hidden shadow-xl bg-gradient-to-br from-gray-700 to-gray-900">
+          <img
+            src="/static/landing/assets/images/video-md-a.jpg"
+            alt="hero"
+            class="w-full h-80 object-cover opacity-90" />
+        </div>
 
-
-
-<!-- End Navbar -->
-<!-- Banner/Slider -->
-<!-- Banner/Slider -->
-<!-- Banner/Slider -->
-<style>
-  .banner-slider {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .single-slide {
-    display: none;
-  }
-
-  .single-slide.active {
-    display: flex;
-    animation: fade 1s ease-in-out;
-  }
-
-  @keyframes fade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  .slider-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 1rem;
-    z-index: 10;
-  }
-
-  .slider-btn {
-    background-color: white;
-    color: black;
-    font-weight: bold;
-    border-radius: 9999px;
-    width: 2.5rem;
-    height: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    cursor: pointer;
-  }
-.wrapper.simulateur.light.day {
-  pointer-events: none; /* Allow clicks to pass through */
-}
-</style>
-
-<div id="header" class="banner-slider">
-  <!-- Slide 1 -->
-  <div class="single-slide active w-full h-screen bg-cover bg-center flex items-center justify-start px-8" style="background-image: url('/static/landing/assets/images/header-bg-a.jpg');">
-    <div class="max-w-2xl text-white bg-black bg-opacity-50 p-6 rounded-lg">
-      <h1 class="text-4xl font-bold mb-4">Sustainable Investing<br><span class="uppercase text-blue-300">Designed For You</span></h1>
-      <p class="text-lg mb-6">We help people, businesses and institutions build, preserve and manage wealth so they can pursue their financial goals. At CryptoCraft, clients come first.</p>
-      <div class="flex gap-4">
-        <a href="{% url 'signup' %}" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-semibold transition">Start Now</a>
-        <a href="{% url 'signin' %}" class="bg-white hover:bg-gray-100 text-black px-6 py-3 rounded-md font-semibold transition">Access Your Account</a>
+        <!-- Small featured card -->
+        <div class="absolute -bottom-8 left-6 w-72 bg-white/90 rounded-xl p-4 shadow-lg border border-gray-200 backdrop-blur-sm">
+          <div class="text-xs text-slate-500">Featured</div>
+          <div class="mt-1 font-semibold text-gray-800">Live trading & portal access</div>
+          <div class="mt-2 text-sm text-slate-600">
+            Fast deposits and withdrawals, multiple payment options.
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+</main>
 
-  <!-- Slide 2 -->
-  <div class="single-slide w-full h-screen bg-cover bg-center flex items-center justify-center px-8" style="background-image: url('/static/landing/assets/images/header-bg-b.jpg');">
-    <div class="max-w-2xl text-white bg-black bg-opacity-50 p-6 rounded-lg text-center">
-      <h1 class="text-4xl font-bold mb-4">Investing Service<br><span class="uppercase text-blue-300">You Can Trust</span></h1>
-      <p class="text-lg mb-6">Offering clients investment solutions across asset classes, styles, capitalizations and geographies.</p>
-      <div class="flex gap-4 justify-center">
-        <a href="{% url 'signup' %}" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-semibold transition">Start Now</a>
-        <a href="{% url 'signin' %}" class="bg-white hover:bg-gray-100 text-black px-6 py-3 rounded-md font-semibold transition">Access Your Account</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navigation Buttons -->
-  <div class="slider-nav">
-    <div class="slider-btn" onclick="prevSlide()">&#10094;</div>
-    <div class="slider-btn" onclick="nextSlide()">&#10095;</div>
-  </div>
-</div>
-
-<!-- Internal JavaScript -->
+<!-- ✅ WORKING TOGGLE SCRIPT -->
 <script>
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.single-slide');
+  document.addEventListener("DOMContentLoaded", function() {
+    const navToggle = document.getElementById("navToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.remove('active');
-      if (i === index) slide.classList.add('active');
+    navToggle.addEventListener("click", function() {
+      mobileMenu.classList.toggle("hidden");
     });
-  }
-
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }
-
-  function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-  }
-
-  setInterval(nextSlide, 8000);
+  });
 </script>
 
-<!-- End Banner/Slider -->
-</header>
-<!-- End Header -->
+<!-- ✅ JS for Typing + Color-Changing Effect -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const heroTitle = document.getElementById("heroTitle");
+    const text = "Become a true partner on the investment market";
+    let index = 0;
+    let colorToggle = false;
 
+    function typeEffect() {
+      if (index < text.length) {
+        heroTitle.textContent += text.charAt(index);
+        // Toggle between white and gray shades as it types
+        heroTitle.style.color = colorToggle ? "#f9fafb" : "#d1d5db"; // white ↔ gray-300
+        colorToggle = !colorToggle;
+        index++;
+        setTimeout(typeEffect, 90);
+      } else {
+        // After finishing, fade to pure white
+        heroTitle.classList.add("text-white");
+      }
+    }
 
-  <!-- End BTC Ticker -->
-  
-<section id="services" class="services-01 py-6">
-<div class="container">
+    typeEffect();
+  });
+</script>
 
-<div class="row">
-<div class="col-lg-12">
-<div class="title-box">
-<h2 class="main-title">Our Services</h2>
-<p class="sub-title">Join CryptoCraft today and be a benficiary of the tech</p>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-md-6 col-lg-4">
-<div class="services-box" style="background-color:black;color:white">
-<!-- <i class="lni lni-protection"></i> -->
-<h5 class="services-title">FOREX</h5>
-<p>Our platforms´ technologies are designed to provide a practical, powerful, and efficient trading experience. Our forex trading experts trades with precision, speed, and safety.Empowering our clients to achieve 99.99% ROI without delay.</p>
-</div>
-</div>
+    <!-- FEATURES -->
+    <section id="about" class="py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-6 items-start">
+          <div class="bg-white p-6 rounded-2xl shadow">
+            <h3 class="font-semibold text-lg">Account Certified Privacy</h3>
+            <p class="mt-2 text-sm text-slate-500">We will never share your private data. Full encryption and DDoS protection.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow">
+            <h3 class="font-semibold text-lg">Protected by Insurance</h3>
+            <p class="mt-2 text-sm text-slate-500">Maximum protection for stored digital assets.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow">
+            <h3 class="font-semibold text-lg">Secure Storage Facility</h3>
+            <p class="mt-2 text-sm text-slate-500">Majority of funds kept in secure offline storage.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="col-md-6 col-lg-4">
-<div class="services-box" style="background-color:black;color:white">
-<!-- <i class="lni lni-consulting"></i> -->
-<h5 class="services-title">AGRICULTURE</h5>
-<p>Agriculture investments have a long history of generating strong financial results. The low correlation of farmland returns with the returns of other classes means that farmland can provide diversification benefits within investor portfolios.</p>
-</div>
-</div>
+    <!-- HOW IT WORKS -->
+    <section id="plans" class="py-16 bg-slate-50">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-2xl font-bold">How it works</h2>
+        <p class="mt-2 text-slate-600">Open an account, deposit, and start trading across many markets.</p>
 
-<div class="col-md-6 col-lg-4">
-<div class="services-box"style="background-color:black;color:white">
-<!-- <i class="lni lni-bullhorn"></i> -->
-<h5 class="services-title">OIL AND GAS</h5>
-<p>We are currently focused on acquiring and developing conventional and unconventional oil and gas resources in the prolific Eagle Ford and Woodbine shale formations of South Texas, the SCOOP and STACK formations of Oklahoma, and the Bakken play in North Dakota.</p>
-</div>
-</div>
-<div class="col-md-6 col-lg-4">
-<div class="services-box" style="background-color:black;color:white">
-<!-- <i class="lni lni-protection"></i> -->
-<h5 class="services-title">NFT AND CRYPTO</h5>
-<p>We buy and sell popular digital cryptocurrencies and keep track of them in one place.NFT Investments was set up to invest in NFTs directly and in companies or funds that have exposure to NFTs and blockchain technology. The Company anticipates that returns to shareholders will be delivered through an appreciation in the value of its portfolio of NFTs.</p>
-</div>
-</div>
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow">
+            <div class="text-3xl">1</div>
+            <h4 class="font-semibold mt-3">Open Your Account</h4>
+            <p class="mt-2 text-sm text-slate-500">Register now, it's free.</p>
+          </div>
 
-<div class="col-md-6 col-lg-4">
-<div class="services-box"style="background-color:black;color:white">
-<!-- <i class="lni lni-bullhorn"></i> -->
-<h5 class="services-title">AUTOMATIC TRADING</h5>
-<p>Put your trading in autopilot with our automatic trading feature. Set your investment amount and period then leave the rest to our trading bot.</p>
-</div>
-</div>
-<div class="col-md-6 col-lg-4">
-<div class="services-box" style="background-color:black;color:white">
-<!-- <i class="lni lni-consulting"></i> -->
-<h5 class="services-title">VAULT PROTECTION</h5>
-<p>For added security, store your funds in a vault with time delayed withdrawals. You can even choose to be penalized for early withdrawal.</p>
-</div>
-</div>
+          <div class="bg-white p-6 rounded-lg shadow">
+            <div class="text-3xl">2</div>
+            <h4 class="font-semibold mt-3">Deposit</h4>
+            <p class="mt-2 text-sm text-slate-500">Add funds using crypto or card.</p>
+          </div>
 
+          <div class="bg-white p-6 rounded-lg shadow">
+            <div class="text-3xl">3</div>
+            <h4 class="font-semibold mt-3">Start Trading</h4>
+            <p class="mt-2 text-sm text-slate-500">Trade forex, crypto, indices and more.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-
-
-<div class="col-md-6 col-lg-4">
-<div class="services-box"style="background-color:black;color:white">
-<!-- <i class="lni lni-money-protection"></i> -->
-<h5 class="services-title">PROTECTED BY INSURANCE</h5>
-<p>Portfolios, assets and funds stored on our servers is covered by our insurance policy.</p>
-</div>
-</div>
-
-<div class="col-md-6 col-lg-4">
-<div class="services-box"style="background-color:black;color:white">
-<!-- <i class="lni lni-handshake"></i> -->
-<h5 class="services-title">SECURE STORAGE</h5>
-<p>We store virtually all of the digital assets in secure offline storage.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section id="bitcoin-explainer" style="padding: 20px; background-color: #f9f9f9;">
+   <section id="bitcoin-explainer" style="padding: 20px; background-color: #f9f9f9;">
   <h2>What is Bitcoin?</h2>
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-    <iframe src="https://www.youtube.com/embed/Bm8EBGjSIxo"
-            title="What is Bitcoin? Explained in 8 minutes"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+    <iframe
+      src="https://www.youtube.com/embed/GCPhJ53t1fg"
+      title="Bitcoin Basics: What is Bitcoin? The No-Nonsense Beginner's Guide"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
     </iframe>
   </div>
 </section>
 
- <!--Section -->
-  <div class="section section-pad bg-grey">
-    <div class="container">
-      <div class="row row-vm">
-        <div class="col-md-5">
-          <div class="round mgr--30 res-m-bttm"><img src="/static/landing/assets/images/securitization.jpg" alt="photo-md" class="img-shadow"></div>
-        </div>
-        <div class="col-md-6 col-md-offset-1 ">
-      <div class="text-block">
-        <h2>Investing For You and With You</h2>
-        <p>We believe that our 100% independent, employee ownership and singular business focus best aligns us—both as an organization and as individuals—with the long-term interests of our clients. </p>
-        <p>With no external parent or public shareholders to serve, we are empowered to run our business with a lasting, client-centric perspective.</p>
-        <a href="{% url 'about' %}" class="btn btn-alt">Read More</a>
 
-      </div>
+
+
+  <!-- Investment Plans Section -->
+<section class="bg-gradient-to-b from-blue-50 to-white py-20">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <!-- Title -->
+    <div class="mb-12">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-blue-700 mb-3">
+        Investment Plans
+      </h2>
+      <p class="text-gray-600 text-lg">
+        Here comes a path to break forth into the millionaire benefactors league!
+      </p>
+    </div>
+
+    <!-- Pricing Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- Plan Card -->
+      <div class="bg-white/80 backdrop-blur-xl border border-blue-100 shadow-xl rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition-all duration-300">
+        <h3 class="text-blue-800 text-2xl font-semibold mb-2">BUSINESS TRADE</h3>
+        <p class="text-gray-700 text-lg mb-4 font-bold">2% TOTAL ROI</p>
+        <div class="text-sm text-gray-600 space-y-2">
+          <p><strong>Profit Frequency:</strong> 5 DAYS</p>
+          <p><strong>Profit:</strong> 2% For 5 Days</p>
+          <p><strong>Limit Capital:</strong> $100 - $10,999</p>
+          <p><strong>Capital Will Be Back:</strong> Yes</p>
+          <p><strong>Total Returns:</strong> 2% + Capital</p>
+          <p>24/7 Hours Support</p>
         </div>
+        <a href="{% url 'signup' %}" 
+           class="mt-6 inline-block w-full bg-blue-600 text-white font-semibold py-3 rounded-xl 
+                  shadow-lg hover:bg-blue-700 hover:shadow-blue-300 hover:-translate-y-1 
+                  transition-all duration-300">
+          Get Started
+        </a>
+      </div>
+
+      <!-- Plan Card -->
+      <div class="bg-white/80 backdrop-blur-xl border border-blue-100 shadow-xl rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition-all duration-300">
+        <h3 class="text-blue-800 text-2xl font-semibold mb-2">PARTNERSHIP TRADE</h3>
+        <p class="text-gray-700 text-lg mb-4 font-bold">3% TOTAL ROI</p>
+        <div class="text-sm text-gray-600 space-y-2">
+          <p><strong>Profit Frequency:</strong> 5 DAYS</p>
+          <p><strong>Profit:</strong> 3% For 5 Days</p>
+          <p><strong>Limit Capital:</strong> $11,000 - $20,999</p>
+          <p><strong>Capital Will Be Back:</strong> Yes</p>
+          <p><strong>Total Returns:</strong> 3% + Capital</p>
+          <p>24/7 Hours Support</p>
+        </div>
+        <a href="{% url 'signup' %}" 
+           class="mt-6 inline-block w-full bg-blue-500 text-white font-semibold py-3 rounded-xl 
+                  shadow-lg hover:bg-blue-600 hover:shadow-blue-400 hover:-translate-y-1 
+                  transition-all duration-300">
+          Get Started
+        </a>
+      </div>
+
+      <!-- Plan Card -->
+      <div class="bg-white/80 backdrop-blur-xl border border-blue-100 shadow-xl rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition-all duration-300">
+        <h3 class="text-blue-800 text-2xl font-semibold mb-2">TRADEMARK TRADE</h3>
+        <p class="text-gray-700 text-lg mb-4 font-bold">4% TOTAL ROI</p>
+        <div class="text-sm text-gray-600 space-y-2">
+          <p><strong>Profit Frequency:</strong> 5 DAYS</p>
+          <p><strong>Profit:</strong> 4% For 5 Days</p>
+          <p><strong>Limit Capital:</strong> $21,000 - $49,999</p>
+          <p><strong>Capital Will Be Back:</strong> Yes</p>
+          <p><strong>Total Returns:</strong> 4% + Capital</p>
+          <p>24/7 Hours Support</p>
+        </div>
+        <a href="{% url 'signup' %}" 
+           class="mt-6 inline-block w-full bg-blue-400 text-white font-semibold py-3 rounded-xl 
+                  shadow-lg hover:bg-blue-500 hover:shadow-blue-300 hover:-translate-y-1 
+                  transition-all duration-300">
+          Get Started
+        </a>
+      </div>
+
+      <!-- Plan Card -->
+      <div class="bg-white/80 backdrop-blur-xl border border-blue-100 shadow-xl rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition-all duration-300">
+        <h3 class="text-blue-800 text-2xl font-semibold mb-2">VIP TRADE</h3>
+        <p class="text-gray-700 text-lg mb-4 font-bold">5% TOTAL ROI</p>
+        <div class="text-sm text-gray-600 space-y-2">
+          <p><strong>Profit Frequency:</strong> 5 DAYS</p>
+          <p><strong>Profit:</strong> 5% For 5 Days</p>
+          <p><strong>Limit Capital:</strong> $50,000 - $100,000,000</p>
+          <p><strong>Capital Will Be Back:</strong> Yes</p>
+          <p><strong>Total Returns:</strong> 5% + Capital</p>
+          <p>24/7 Hours Support</p>
+        </div>
+        <a href="{% url 'signup' %}" 
+           class="mt-6 inline-block w-full bg-gradient-to-r from-blue-600 to-blue-400 text-white font-semibold py-3 rounded-xl 
+                  shadow-lg hover:from-blue-500 hover:to-sky-400 hover:shadow-blue-200 hover:-translate-y-1 
+                  transition-all duration-300">
+          Get Started
+        </a>
       </div>
     </div>
   </div>
-  <!--End Section -->
-<div class="gaps"></div>
-
-<div class="gaps"></div>
-
-  <!--Section -->
-  <div class="section section-pad has-bg light dark-filter">
-    <div class="imagebg has-parallax">
-  <img src="/static/landing/assets/images/calc-bg.jpg" alt="calc-bg">
-</div>
-    <div class="container">
-      <div class="row row-vm">
-        <div class="col-md-5">
-      <div class="text-block">
-        <h2>Broad Scope, Singular Focus</h2>
-        <p>We offer clients around the world investment solutions across asset classes, capitalizations, styles and geographies in both public and private markets, as well as multi-asset class solutions that bring them all together. To serve this broad base of institutions, advisors and individuals, our strategies are available through a variety of investment vehicles.</p>
-      </div>
-        </div>
-        
-        
-      </div>
-    </div>
-  </div>
-  <!--End Section -->
-  <br>
-  <br>
-        <div class="col-md-5 col-md-offset-1 ">
-      <div class="text-block">
-        <h2>Our purpose <br>and values</h2>
-        <p>Our purpose is why our company exists. At CryptoCraft we create clarity and confidence today for a more sustainable tomorrow.
-
-</p>
-        <p>And our values are more than words. A strong client focus, an emphasis on teamwork, unwavering integrity, mutual respect and a constant striving for excellence are at the core of CryptoCraft rich history.</p>
-        <a href="{% url 'signup' %}" class="btn btn-alt">Get started</a>
-
-      </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!--End Section -->
-
-<!--Section -->
-  
-      <!-- section -->
-  <section class="price-01 pt-6 pb-50" >
-<div class="container">
-<div class="row">
-<div class="col-lg-12">
-<div class="title-box">
-<h2 class="main-title">Investment Plans</h2>
-<p class="sub-title">Here comes a path to break forth into the millionaire benefactors league!</p>
-</div>
-</div>
-</div>
-<div class="row">
-
-<div class="col-md-6 col-lg-4" >
-<div class="price-box" style="background-color:black;color:white">
-<div class="price-cost" style="color:white"><span></span>BASIC PLAN
-<div class="price-cost-border"></div>
-</div>
-<h3 class="price-title" style="color:white">21% TOTAL ROI</h3>
-
-<div class="price-text">
-<p><b><strong>Profit Frequency:</strong></b> 5 DAYS</p>
-<p><b><strong>Profit:</strong></b> 21% Every 5 Days</p>
-<p><b><strong>Limit Capital:</strong></b> $100 - $10999</p>
-<p><b><strong>Capital Will Be Back:</strong></b> Yes</p>
-<p><b><strong>Total Returns:</strong></b> 21% + Capital</p>
-<p>24/7 Hours Support</p>
-</div>
-<div class="price-button">
-<a class="pill-button-01 mt-3" href="{% url 'signup' %}">Get Started</a>
-
-</div>
-</div>
-</div>
-
-<div class="col-md-6 col-lg-4">
-<div class="price-box"style="background-color:black;color:white">
-<div class="price-cost"style="color:white"><span></span>STANDARD PLAN
-<div class="price-cost-border"></div>
-</div>
-<h3 class="price-title"style="color:white">56% TOTAL ROI</h3>
-<div class="price-text">
-<p><b><strong>Profit Frequency:</strong></b> 5 DAYS</p>
-<p><b><strong>Profit:</strong></b> 56% Every 5 Days</p>
-<p><b><strong>Limit Capital:</strong></b> $11000 - $40999</p>
-<p><b><strong>Capital Will Be Back:</strong></b> Yes</p>
-<p><b><strong>Total Returns:</strong></b> 56% + Capital</p>
-<p>24/7 Hours Support</p>
-</div>
-<div class="price-button">
-<a class="pill-button-01 mt-3" href="{% url 'signup' %}">Get Started</a>
-
- </div>
-</div>
-</div>
-<div class="col-md-6 col-lg-4">
-<div class="price-box"style="background-color:black;color:white">
-<div class="price-cost"style="color:white"><span></span>PROFESSIONAL PLAN
-<div class="price-cost-border"></div>
-</div>
-<h3 class="price-title"style="color:white">105% TOTAL ROI</h3>
-<div class="price-text">
-<p><b><strong>Profit Frequency:</strong></b> 5 DAYS</p>
-<p><b><strong>Profit:</strong></b> 105% Every 5 Days</p>
-<p><b><strong>Limit Capital:</strong></b> $41000 - $74999</p>
-<p><b><strong>Capital Will Be Back:</strong></b> Yes</p>
-<p><b><strong>Total Returns:</strong></b> 105% + Capital</p>
-<p>24/7 Hours Support</p>
-</div>
-<div class="price-button">
-<a class="pill-button-01 mt-3" href="{% url 'signup' %}">Get Started</a>
-
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-6 col-lg-4">
-<div class="price-box"style="background-color:black;color:white">
-<div class="price-cost"style="color:white"><span></span>ADVANCED PLAN
-<div class="price-cost-border"></div>
-</div>
-<h3 class="price-title"style="color:white">180% TOTAL ROI</h3>
-<div class="price-text">
-<p><b><strong>Profit Frequency:</strong></b> 5 DAYS</p>
-<p><b><strong>Profit:</strong></b> 180% Every 5 Days</p>
-<p><b><strong>Limit Capital:</strong></b> $75000 - $100000000</p>
-<p><b><strong>Capital Will Be Back:</strong></b> Yes</p>
-<p><b><strong>Total Returns:</strong></b> 180% + Capital</p>
-<p>24/7 Hours Support</p>
-</div>
-<div class="price-button">
-<a class="pill-button-01 mt-3" href="{% url 'signup' %}">Get Started</a>
-
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
 
 
 
-<section class="counted-01 py-6" >
-<div class="container">
-<div class="row">
-<div class="col-lg-5">
-<div class="row">
-<div class="col-lg-12">
-<div class="title-box">
-<h2 class="main-title">Statistics
-Facts</h2>
-<h5 class="sub-title">We push accountabilty and transparency. </h5>
-</div>
-</div>
-</div>
-<p>We work to bring Wallstreet standards for research, risk management and transparency to digital asset investing.</p>
-</div>
-<div class="col-lg-7">
-<div class="counted">
-<div class="row">
-
-<div class="col-6 col-sm-3 count-item">
-<div class="count-content" style="background-color:black">
-<span class="timer count-number">9K+</span>
-<p class="mb-0"style="color:white">Individual<br>Benefactors<br></p>
-</div>
-</div>
-
-<div class="col-6 col-sm-3 count-item">
-<div class="count-content"style="background-color:black">
-<span class="timer count-number">1.2K+</span>
-<p class="mb-0"style="color:white">Staffs<br>Worldwide<br></p>
-</div>
-</div>
- 
-<div class="col-6 col-sm-3 count-item">
-<div class="count-content" style="background-color:black">
-<span class="timer count-number">$77M+</span>
-<p class="mb-0"style="color:white">Committed<br>Funds</p>
-</div>
-</div>
-
-<div class="col-6 col-sm-3 count-item">
-<div class="count-content"style="background-color:black">
-<span class="timer count-number">80</span>
-<p class="mb-0"style="color:white">Supported<br>Countries</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-  <!--End Section -->
-  <section id="team" class="team-01 py-6">
-<div class="container">
-<div class="row">
-<div class="col-lg-12">
-<div class="title-box">
-<h2 class="main-title">Our Expert Team</h2>
-<p class="sub-title">Meet Our Professional Team</p>
-</div>
-</div>
-</div>
-<div class="team-member">
-<div class="row">
-
-<div class="col-md-2 col-lg-4">
-<div class="team-box">
-<div class="team-img">
-<img style="height:320px;width:340px;" src="/static/landing/assets/images/emilie.jpg" alt="/">
-</div>
-<div class="team-info">
-<h4 class="team-name"style="color:white">Emilie Alisa</h4>
-<h6 class="team-job"style="color:white">Account Manager</h6>
-<div class="team-social">
-<!-- <li class="list-inline-item">
-<a href="javascript:void(0);"><i class="lni lni-telegram-original"></i></a>
-</li> -->
-</ul>
-</div>
-</div>
-</div>
-</div>
-
-<div class="col-md-6 col-lg-4">
-<div class="team-box">
-<div class="team-img">
-<img src="/static/landing/assets/images/harris.jpg" alt="/">
-</div>
-<div class="team-info">
-<h4 class="team-name"style="color:white">Andrew Harris</h4>
-<h6 class="team-job"style="color:white">Marketing Director</h6>
-<div class="team-social">
-    
-<!-- <ul class="list-inline">
-<li class="list-inline-item">
-<a href="javascript:void(0);"><i class="lni lni-telegram-original"></i></a>
-</li>
-</ul> -->
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-6 col-lg-4">
-<div class="team-box">
-<div class="team-img">
-<img src="/static/landing/assets/images/staff.jpg" alt="/">
-</div>
-<div class="team-info">
-<h4 class="team-name"style="color:white">Cynthia Leon</h4>
-<h6 class="team-job"style="color:white">Unit Manager </h6>
-<div class="team-social">
-    
-<!-- <ul class="list-inline">
-<li class="list-inline-item">
-<a href="javascript:void(0);"><i class="lni lni-telegram-original"></i></a>
-</li>
-</ul> -->
-</div>
-</div>
-</div>
-</div>
-
-<div class="col-md-6 col-lg-4">
-<div class="team-box">
-<div class="team-img">
-<img src="/static/landing/assets/images/tabitha.jpg" alt="/">
-</div>
-<div class="team-info">
-<h4 class="team-name" style="color:white">Tabitha Ole</h4>
-<h6 class="team-job"style="color:white">Support Head</h6>
-<div class="team-social">
-<!-- <ul class="list-inline">
-<li class="list-inline-item">
- <a href="javascript:void(0);"><i class="lni lni-telegram-original"></i></a>
-</li>
-</ul> -->
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-  <!--Section -->
-  <div class="section section-pad">
-    <div class="container">
-      <div class="section-head">
-    <div class="row text-center">
-      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        <h2 class="heading-section">What investors say</h2>
-        <p>Providing an excellent service is at the heart of our business. CryptoCraft is committed to building strong relationships and delivering you the very highest standards of service, </p>
+    <!-- TESTIMONIALS -->
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto px-6">
+        <h3 class="text-xl font-semibold">What our investors say</h3>
+        <div class="mt-6 grid md:grid-cols-3 gap-6">
+          <blockquote class="bg-white p-6 rounded-lg shadow">
+            <p class="text-sm text-slate-600">"I received an amazing payout that improved my trading significantly."</p>
+            <footer class="mt-4 text-xs text-slate-400">— Rudi Dreher, Germany</footer>
+          </blockquote>
+          <blockquote class="bg-white p-6 rounded-lg shadow">
+            <p class="text-sm text-slate-600">"Best platform I have ever seen."</p>
+            <footer class="mt-4 text-xs text-slate-400">— Caio, Brazil</footer>
+          </blockquote>
+          <blockquote class="bg-white p-6 rounded-lg shadow">
+            <p class="text-sm text-slate-600">"Prompt, helpful, and reliable service."</p>
+            <footer class="mt-4 text-xs text-slate-400">— Chun Lee, China</footer>
+          </blockquote>
+        </div>
       </div>
-    </div>
-      </div>
-      <div class="gaps size-3x"></div>
-      <div class="row text-center">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="testimonial-carousel has-carousel" data-items="1" data-loop="true" data-dots="true" data-auto="true">
-            <div class="testimonial-item">
-              <div class="client-photo circle">
-                <img src="/static/landing/assets/images/team-thumb-a.jpg" alt="client">
-                <em class="fa fa-quote-right"></em>
-              </div>
-              <blockquote>What a team! The Keystone team make everything flow smoothly, The service that you receive makes the whole process stress free. They keep you informed throughout and make sure that you get the service to suit your individual needs. Don't waste your time going anywhere else.</blockquote>
-              <div class="client-info">
-                <h6>Dan</h6>
-                <span>Paris, France</span>
-              </div>
-            </div>
-            <div class="testimonial-item">
-              <div class="client-photo circle">
-                <img src="/static/landing/assets/images/team-thumb-b.jpg" alt="client">
-                <em class="fa fa-quote-right"></em>
-              </div>
-              <blockquote>Thanks for helping me with my first investment experience ever. You have made the process very easy. I will definitely continue to patronize your services.</blockquote>
-              <div class="client-info">
-                <h6>Benji</h6>
-                <span>Madrid, Spain</span>
-              </div>
-            </div>
-            <div class="testimonial-item">
-              <div class="client-photo circle">
-                <img src="/static/landing/assets/images/CEO.jpg" alt="client">
-                <em class="fa fa-quote-right"></em>
-              </div>
-              <blockquote>Very reliable and trustworthy investment company. I love their customer support and swift payment. psst highly recommended.</blockquote>
-              <div class="client-info">
-                <h6>Kenny</h6>
-                <span>California, Usa</span>
-              </div>
-            </div>
-           <div class="testimonial-item">
-    <div class="client-photo circle">
-        <img src="/static/landing/assets/images/man.jpg" alt="client" class="w-24 h-24 rounded-full object-cover">
-        <em class="fa fa-quote-right"></em>
-    </div>
-    <blockquote class="my-2">The moment I started investing with this company, it has really been of nice and wonderful service. I must say this company provides one of the best services.</blockquote>
-    <div class="client-info mb-4">
-        <h6 class="text-lg font-semibold">Robert</h6>
-        <span class="text-gray-500">Basel, Switzerland</span>
-    </div>
+    </section>
 
     <!-- Certificate Image -->
     <div class="flex justify-center">
         <img src="/static/landing/assets/images/certificate.jpg" alt="Certificate" class="max-w-xs md:max-w-sm lg:max-w-md mx-auto mt-4 rounded shadow-lg">
     </div>
-</div>
-            
-        </div><br><br> 
-          </div>
-         
-         <div class="col-md-12" >
-          
-         <!--<iframe style="margin-left:-25px;margin-top:-50px;"src="https://player.vimeo.com/video/754461946?h=3e693abe6c&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="340" height="540" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="testimony1"></iframe>                      -->
-         <!--   <br><iframe style="margin-left:-25px;margin-bottom:-90px;margin-top:-150px"src="https://player.vimeo.com/video/754466337?h=7ae4e4c483&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="340" height="540" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="testimony3.mp4"></iframe>       -->
-         
-               
+    <br>
 
+   <!-- FOOTER SECTION -->
+<footer class="bg-gradient-to-br from-sky-900 via-blue-900 to-gray-900 text-white py-16 relative overflow-hidden">
+  <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-mosaic.png')] opacity-10"></div>
 
-        </div>
+  <div class="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-3 gap-10">
+    <!-- Main Navigation -->
+    <div>
+      <h5 class="text-xl font-bold border-b-2 border-sky-500 inline-block pb-2 mb-4">Main Navigation</h5>
+      <ul class="space-y-2 text-slate-300">
+        <li><a href="{% url 'home' %}" class="hover:text-sky-400 transition-colors">Home</a></li>
+        <li><a href="{% url 'about' %}" class="hover:text-sky-400 transition-colors">About Our Company</a></li>
+        <li><a href="{% url 'packages' %}" class="hover:text-sky-400 transition-colors">Investment Plans</a></li>
+      </ul>
+    </div>
 
+    <!-- Useful Links -->
+    <div>
+      <h5 class="text-xl font-bold border-b-2 border-sky-500 inline-block pb-2 mb-4">Useful Links</h5>
+      <ul class="space-y-2 text-slate-300">
+        <li><a href="{% url 'terms' %}" class="hover:text-sky-400 transition-colors">Terms of Service</a></li>
+        <li><a href="{% url 'faq' %}" class="hover:text-sky-400 transition-colors">Frequently Asked</a></li>
+        <li><a href="mailto:cryptoearns37@gmail.com" class="hover:text-sky-400 transition-colors">CryptoEarns Support</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <h5 class="text-xl font-bold border-b-2 border-sky-500 inline-block pb-2 mb-4">Get in Touch</h5>
+      <div class="mt-3">
+        <p id="contactText" class="text-slate-300 text-lg font-medium"></p>
+        <p class="mt-3 text-slate-400">📩 <a href="mailto:chukwuchinemerem258@gmail.com" class="text-sky-400 hover:underline">chukwuchinemerem258@gmail.com</a></p>
+        <p class="mt-2 text-slate-400">🌍 Miami, Florida</p>
       </div>
     </div>
   </div>
-  <!--End Section -->
 
-  <!-- Section -->
+  <!-- Divider -->
+  <div class="border-t border-sky-700 mt-12"></div>
 
-
-  <center><img src ="/static/landing/assets/images/Capture.png"  id="onyem"/></center>
-<div class="section section-pad-sm cta-small light" >
-<div class="cta-block">
-  <div class="container">
-    <div class="row mobile-center">
-      <div class="col-md-12">
-        <div class="cta-sameline">
-          <h3>Open account for free and start earning now!</h3>
-          <a class="btn btn-outline btn-alt btn-md" href="{% url 'signup' %}">get started</a>
-
-        </div>
-      </div>
-    </div>
+  <!-- Copyright -->
+  <div class="max-w-7xl mx-auto px-6 mt-6 text-center text-slate-400">
+    <p>© <span id="year"></span> <span class="font-semibold text-sky-400">Lunaro Capital</span>. All Rights Reserved.</p>
   </div>
-</div>
-</div>
-<!-- End Section -->
+</footer>
 
-  <!-- Load jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- JS: Dynamic Text Typing Effect -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const contactText = document.getElementById("contactText");
+    const phrases = [
+      "We’d love to hear from you 💬",
+      "Reach out for partnerships 🤝",
+      "Let’s grow your investments 🚀"
+    ];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-<!-- Notification Box -->
-<style>
-  .mgm {
-    position: fixed;
-    bottom: 100px;
-    left: 30px;
-    background: rgba(0, 0, 0, 0.85);
-    color: white;
-    padding: 15px 20px;
-    border-radius: 10px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    z-index: 9999;
-    display: none;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  }
+    function typeEffect() {
+      const current = phrases[phraseIndex];
+      contactText.textContent = current.substring(0, charIndex);
 
-  .mgm a {
-    color: #00ffcc;
-    text-decoration: underline;
-  }
-</style>
+      if (!isDeleting && charIndex < current.length) {
+        charIndex++;
+        setTimeout(typeEffect, 80);
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(typeEffect, 50);
+      } else {
+        if (!isDeleting) {
+          isDeleting = true;
+          setTimeout(typeEffect, 1000);
+        } else {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(typeEffect, 500);
+        }
+      }
+    }
 
-<div class="mgm">
-  <div class="txt"></div>
-</div>
+    typeEffect();
+    document.getElementById("year").textContent = new Date().getFullYear();
+  });
+</script>
 
-<!-- Script -->
+
+ <!-- Notification script (vanilla JS, no jQuery required) -->
 <script type="text/javascript">
+(function () {
+  // data arrays (kept as you provided)
   var listCountries = ['USA', 'Germany', 'France', 'Indonesia', 'Philippines', 'Canada', 'UK', 'Sweden', 'Italy', 'Netherlands', 'Israel'];
   var listPlans = ['$500', '$1,500', '$1,000', '$10,000', '$15,000', '$2,000', '$3,000', '$4,000', '$600', '$700', '$2,500'];
   var transarray = ['has <b>withdrawn</b>', 'just <b>invested</b>', 'is <b>trading with</b>'];
 
+  // helper: create .mgm markup & minimal styles if not present
+  function ensureMgm() {
+    if (document.querySelector('.mgm')) return;
+    var mgm = document.createElement('div');
+    mgm.className = 'mgm'; // keep the same class for compatibility
+    // Add inner structure expected by your code
+    mgm.innerHTML = '<div class="txt"></div>';
+    document.body.appendChild(mgm);
+
+    // minimal styles so it looks and animates nicely (you can move to CSS)
+    var style = document.createElement('style');
+    style.innerHTML = `
+      .mgm {
+        position: fixed;
+        bottom: 110px;
+        left: 20px;
+        max-width: 320px;
+        background: rgba(255,255,255,0.97);
+        border-radius: 10px;
+        padding: 12px 14px;
+        box-shadow: 0 8px 24px rgba(2,6,23,0.12);
+        font-size: 14px;
+        color: #0f172a;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.45s ease;
+        z-index: 9999;
+      }
+      .mgm .txt a { text-decoration: underline; color: #0ea5e9; }
+      .mgm.show { display: block !important; }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // show / hide with fade
+  function fadeIn(el) {
+    el.classList.add('show');
+    // ensure display block before opacity change
+    requestAnimationFrame(function () {
+      el.style.opacity = '1';
+    });
+  }
+  function fadeOut(el, done) {
+    el.style.opacity = '0';
+    // after transition, hide
+    setTimeout(function () {
+      el.classList.remove('show');
+      if (typeof done === 'function') done();
+    }, 500); // matches transition 0.45s ~ 500ms
+  }
+
+  // main notification generator
   function showNotification() {
+    var mgmTxt = document.querySelector('.mgm .txt');
+    if (!mgmTxt) return; // nothing to do
+
     var country = listCountries[Math.floor(Math.random() * listCountries.length)];
     var transtype = transarray[Math.floor(Math.random() * transarray.length)];
     var plan = listPlans[Math.floor(Math.random() * listPlans.length)];
     var msg = 'Someone from <b>' + country + '</b> ' + transtype + ' <a href="javascript:void(0);">' + plan + '</a>';
 
-    $(".mgm .txt").html(msg);
-    $(".mgm").stop(true).fadeIn(500);
+    mgmTxt.innerHTML = msg;
 
+    var mgm = document.querySelector('.mgm');
+    // show
+    fadeIn(mgm);
+
+    // hide after 8s
     setTimeout(function () {
-      $(".mgm").fadeOut(500);
+      fadeOut(mgm);
     }, 8000);
 
-    // Repeat after a random interval
-    let nextInterval = Math.floor(Math.random() * (8000 - 4000 + 1)) + 4000;
+    // schedule next run (random between 4000 and 8000 ms)
+    var nextInterval = Math.floor(Math.random() * (8000 - 4000 + 1)) + 4000;
     setTimeout(showNotification, nextInterval);
   }
 
-  // Start the cycle
-  $(document).ready(function () {
+  // initialize
+  document.addEventListener('DOMContentLoaded', function () {
+    ensureMgm();
+    // small initial delay (2s) to start
     setTimeout(showNotification, 2000);
   });
+})();
 </script>
 
  
 
-<!-- Section Footer -->
-		<div class="footer-section section section-pad-md light bg-footer">
-			
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 col-sm-6 wgs-box res-m-bttm-lg">
-						<!-- Each Widget -->
-						<div class="wgs-footer wgs-menu">
-							<h5 class="wgs-title ucap">Main Navigation</h5>
-							<div class="wgs-content">
-								<ul class="menu">
-									<li><a href="{% url 'home' %}">Home</a></li>
-									<li><a href="{% url 'about' %}">About Our Company</a></li>
-									
-									<li><a href="{% url 'packages' %}">Investment Plans</a></li>
-									
-								</ul>
-							</div>
-						</div>
-						<!-- End Widget -->
-					</div>
-					<div class="col-md-3 col-sm-6 wgs-box res-m-bttm-lg">
-						<!-- Each Widget -->
-						<div class="wgs-footer wgs-menu">
-							<h5 class="wgs-title ucap">Useful Links</h5>
-							<div class="wgs-content">
-								<ul class="menu">
-									<li><a href="{% url 'terms' %}">Terms of Service</a> <!-- ✅ Correct --></li>
-									<li><a href="{% url 'faq' %}">Frequently Asked</a></li>
-                  <li><a href="mailto:cryptocraft020@gmail.com">CryptoCraft Support</a></li>
 
-                                    
-									
-								</ul>
-							</div>
-						</div>
-						<!-- End Widget -->
-					</div>
-					
-					<div class="col-md-3 col-sm-6 wgs-box res-m-bttm">
-						<!-- Each Widget -->
-						<div class="wgs-footer wgs-contact">
-							<h5 class="wgs-title ucap">get in touch</h5>
-							<div class="wgs-content">
-								
-							</div>
-						</div>
-						<!-- End Widget -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Section -->
-
-		<!-- Copyright -->
-		<div class="copyright light">
-			<div class="container">
-				<div class="row">
-					<div class="site-copy col-sm-7">
-						<p>Copyright &copy; 2023 CryptoCraft</p>
-					</div>
-					
-				</div>
-			</div>
-		</div>
-		<!-- End Copyright -->
-
-		<!-- Preloader !remove please if you do not want -->
-		<!-- Preloader End -->
-
-		<!-- JavaScript
-		================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-
-	
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 s1.async=true;
-s1.src='https://embed.tawk.to/68767db2c0f7b21912799ad9/default';
+s1.src='https://embed.tawk.to/68ec1859ec7a4f195501039d/default';
 s1.charset='UTF-8';
 s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
+
 <!-- Google Translate Widget (14 languages only) -->
-<div id="google_translate_element" style="position: fixed; top: 130px; right: 10px; z-index: 9999; background: white; text-align: center; padding: 5px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></div>
+<div id="google_translate_element" style="position: fixed; top: 75px; right: 10px; z-index: 9999; background: white; text-align: center; padding: 5px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></div>
 <script type="text/javascript">
   function googleTranslateElementInit() {
     new google.translate.TranslateElement({
@@ -891,4 +563,3 @@ s0.parentNode.insertBefore(s1,s0);
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
-
