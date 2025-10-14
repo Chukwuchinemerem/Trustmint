@@ -351,51 +351,53 @@
         <img src="/static/landing/assets/images/certificate.jpg" alt="Certificate" class="max-w-xs md:max-w-sm lg:max-w-md mx-auto mt-4 rounded shadow-lg">
     </div>
     <br>
-
-   <!-- FOOTER SECTION -->
-<footer class="bg-gradient-to-br from-sky-900 via-blue-900 to-gray-900 text-white py-16 relative overflow-hidden">
+      
+    <!-- FOOTER SECTION -->
+<footer class="bg-blue-900 text-white py-16 relative overflow-hidden">
   <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-mosaic.png')] opacity-10"></div>
-
+  
   <div class="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-3 gap-10">
     <!-- Main Navigation -->
     <div>
-      <h5 class="text-xl font-bold border-b-2 border-sky-500 inline-block pb-2 mb-4">Main Navigation</h5>
-      <ul class="space-y-2 text-slate-300">
+      <h5 class="text-sm font-bold border-b-2 border-sky-500 inline-block pb-1 mb-3">Main Navigation</h5>
+      <ul class="space-y-1 text-slate-300 text-xs">
         <li><a href="{% url 'home' %}" class="hover:text-sky-400 transition-colors">Home</a></li>
         <li><a href="{% url 'about' %}" class="hover:text-sky-400 transition-colors">About Our Company</a></li>
         <li><a href="{% url 'packages' %}" class="hover:text-sky-400 transition-colors">Investment Plans</a></li>
       </ul>
     </div>
-
+    
     <!-- Useful Links -->
     <div>
-      <h5 class="text-xl font-bold border-b-2 border-sky-500 inline-block pb-2 mb-4">Useful Links</h5>
-      <ul class="space-y-2 text-slate-300">
+      <h5 class="text-sm font-bold border-b-2 border-sky-500 inline-block pb-1 mb-3">Useful Links</h5>
+      <ul class="space-y-1 text-slate-300 text-xs">
         <li><a href="{% url 'terms' %}" class="hover:text-sky-400 transition-colors">Terms Of Service</a></li>
         <li><a href="{% url 'faq' %}" class="hover:text-sky-400 transition-colors">Frequently Asked</a></li>
         <li><a href="mailto:lunarocapital@gmail.com" class="hover:text-sky-400 transition-colors">Lunaro Capital Support</a></li>
       </ul>
     </div>
-
+    
     <!-- Contact -->
     <div>
-      <h5 class="text-xl font-bold border-b-2 border-sky-500 inline-block pb-2 mb-4">Get in Touch</h5>
-      <div class="mt-3">
-        <p id="contactText" class="text-slate-300 text-lg font-medium"></p>
-        <p class="mt-3 text-slate-400">📩 <a href="mailto:lunarocapital@gmail.com" class="text-sky-400 hover:underline">lunarocapital@gmail.com</a></p>
-        <p class="mt-2 text-slate-400">🌍 Miami, Florida</p>
+      <h5 class="text-sm font-bold border-b-2 border-sky-500 inline-block pb-1 mb-3">Get in Touch</h5>
+      <div class="mt-2">
+        <p id="contactText" class="text-slate-300 text-sm font-medium"></p>
+        <p class="mt-2 text-slate-400 text-xs">📩 <a href="mailto:lunarocapital@gmail.com" class="text-sky-400 hover:underline">lunarocapital@gmail.com</a></p>
+        <p class="mt-1 text-slate-400 text-xs">🌍 Cardiff, Wales</p>
       </div>
     </div>
   </div>
-
+  
   <!-- Divider -->
-  <div class="border-t border-sky-700 mt-12"></div>
-
+  <div class="border-t border-sky-700 mt-8"></div>
+  
   <!-- Copyright -->
-  <div class="max-w-7xl mx-auto px-6 mt-6 text-center text-slate-400">
+  <div class="max-w-7xl mx-auto px-6 mt-4 text-center text-slate-400 text-xs">
     <p>© <span id="year"></span> <span class="font-semibold text-sky-400">Lunaro Capital</span>. All Rights Reserved.</p>
   </div>
 </footer>
+
+   
 
 <!-- JS: Dynamic Text Typing Effect -->
 <script>
