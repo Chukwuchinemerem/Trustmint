@@ -36,6 +36,7 @@
         <a href="{% url 'packages' %}" class="hover:text-sky-600">Investment Plans</a>
         <a href="{% url 'contact' %}" class="hover:text-sky-600">Contact</a>
         <a href="{% url 'signup' %}" class="px-4 py-2 bg-sky-600 text-white rounded-md">Register</a>
+        <a href="{% url 'signin' %}" class="px-4 py-2 bg-sky-600 text-white rounded-md">Log In</a>
       </nav>
 
       <!-- mobile toggle -->
@@ -322,6 +323,9 @@
       </div>
     </div>
 
+    <br>
+    
+
      <!-- Plan Card -->
       <div class="bg-white/80 backdrop-blur-xl border border-blue-100 shadow-xl rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition-all duration-300">
         <h3 class="text-blue-800 text-2xl font-semibold mb-2">VIP PLAN</h3>
@@ -574,17 +578,18 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 <!--End of Tawk.to Script-->
 
-<!-- Google Translate Widget (14 languages only) -->
+<!-- Google Translate Widget (16 languages total, added Vietnamese & Indonesian) -->
 <div id="google_translate_element" style="position: fixed; top: 75px; right: 10px; z-index: 9999; background: white; text-align: center; padding: 5px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></div>
 <script type="text/javascript">
   function googleTranslateElementInit() {
     new google.translate.TranslateElement({
       pageLanguage: 'en',
-      includedLanguages: 'en,es,pt,ar,fr,de,ru,zh-CN,ja,hi,it,tr,ko,pl',
+      includedLanguages: 'en,es,pt,ar,fr,de,ru,zh-CN,ja,hi,it,tr,ko,pl,vi,id',
       layout: google.translate.TranslateElement.InlineLayout.SIMPLE
     }, 'google_translate_element');
   }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
