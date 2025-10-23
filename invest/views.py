@@ -70,7 +70,8 @@ def signup(request):
         password_confirm = request.POST.get('password_confirm')
         phone = request.POST.get('phone')
         country = request.POST.get('country')
-        
+        crypto_wallet = request.POST.get('usdt_bep20')
+    
         # Validation
         if password != password_confirm:
             messages.error(request, 'Passwords do not match')
@@ -95,6 +96,11 @@ def signup(request):
                 phone=phone,
                 country=country
             )
+            # store usdt bep20 on the user model (field exists in your models.py)
+            if crypto_wallet:
+                user.usdt_bep20 = crypto_wallet.strip()
+                user.save()
+             
             messages.success(request, 'Account created successfully! Please login.')
             return redirect('signin')
         except Exception as e:

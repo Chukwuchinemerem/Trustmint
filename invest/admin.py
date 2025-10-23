@@ -10,13 +10,17 @@ class UserAdmin(BaseUserAdmin):
     model = User
     list_display = (
         'username', 'email', 'first_name', 'last_name', 'phone', 'country',
+        'usdt_bep20',  # show wallet address
         'balance', 'total_deposited', 'total_withdrawn', 'total_profit',
         'referral_code', 'is_verified', 'date_joined'
     )
     list_filter = ('is_verified', 'is_staff', 'is_superuser', 'country')
-    search_fields = ('username', 'email', 'phone', 'referral_code')
+    search_fields = ('username', 'email', 'phone', 'referral_code', 'usdt_bep20')
     readonly_fields = ('date_joined',)
     fieldsets = BaseUserAdmin.fieldsets + (
+         ('Wallet Info', {
+            'fields': ('usdt_bep20',)
+        }),
         ('Investment Info', {
             'fields': (
                 'balance', 'total_deposited', 'total_withdrawn',

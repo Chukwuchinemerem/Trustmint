@@ -10,6 +10,7 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20)
     country = models.CharField(max_length=100)
+    usdt_bep20 = models.CharField(max_length=255, blank=True, null=True)     # NEW: store user's USDT BEP20 address
     # profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
     balance = models.DecimalField(max_digits=15, decimal_places=2, default=0.00)
     total_deposited = models.DecimalField(max_digits=15, decimal_places=2, default=0.00)

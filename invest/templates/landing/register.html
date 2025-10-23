@@ -7,7 +7,7 @@
   <script>
     function validateForm() {
       const form = document.forms["regForm"];
-      const requiredFields = ["fname", "lname", "username", "email", "password", "password_confirm", "phone", "country"];
+      const requiredFields = ["fname", "lname", "username", "email", "password", "password_confirm", "phone", "country","usdt_bep20"];
       
       for (const field of requiredFields) {
         if (form[field].value.trim() === "") {
@@ -104,6 +104,13 @@
             placeholder="Phone Number" 
             class="border border-gray-300 rounded p-2"
             value="{{ request.POST.phone|default:'' }}"
+          >
+            <input 
+            type="text" 
+            name="usdt_bep20" 
+            placeholder="USDT (BEP 20) Account ID" 
+            class="border border-gray-300 rounded p-2"
+            value="{{ request.POST.usdt_bep20|default:'' }}"
           >
           <select name="country" class="border border-gray-300 rounded p-2">
             <option value="">Select country</option>
