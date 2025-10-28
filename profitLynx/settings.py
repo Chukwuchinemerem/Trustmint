@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-c0qz2c0u9ky69v8@27o54t&7l3l0(^*0tedzop8&+z%fii(tx#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['trustmint-1xde.onrender.com', 'www.yourdomain.com', '127.0.0.1']
+ALLOWED_HOSTS = ['trustmint-1xde.onrender.com', 'www.trustmint.live', '127.0.0.1']
 
 AUTH_USER_MODEL = 'invest.User'
 
@@ -148,9 +148,9 @@ LOGOUT_REDIRECT_URL = 'signin'
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'cryptoinvest143@gmail.com'           
+EMAIL_HOST_USER = 'trustmintgroup@gmail.com'           
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER                      
-EMAIL_HOST_PASSWORD = "qzcpqmkeknvxjlim"            
+EMAIL_HOST_PASSWORD = "dpmqekvflkmkwzpy"            
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 EMAIL_PORT = 465
