@@ -554,7 +554,7 @@ def admin_deposits(request):
                     tier=deposit.investment_tier,
                     amount=deposit.amount,
                     start_date=timezone.now(),
-                    end_date=timezone.now() + timedelta(hours=deposit.investment_tier.duration_days)
+                    end_date=timezone.now() + timedelta(days=deposit.investment_tier.duration_days)  # Changed from hours to days
                 )
                 
                 # Update transaction status
@@ -611,7 +611,54 @@ def admin_deposits(request):
             messages.error(request, f'Error processing deposit: {str(e)}')
         
         return redirect('admin_deposits')
+
+    # GET request handling - fetch deposits and statistics
+    deposits = DepositRequest.objects.select_related(
+        'user', 'cryptocurrency', 'investment_tier', 'processed_by'
+    ).order_by('-created_at')
     
+    # Calculate statistics
+    today = timezone.now().date()
+    
+    # Today's statistics
+    approved_today = DepositRequest.objects.filter(
+        processed_at__date=today,
+        status='APPROVED'
+    ).aggregate(
+        count=models.Count('id'),
+        amount=models.Sum('amount')
+    )
+    
+    rejected_today = DepositRequest.objects.filter(
+        processed_at__date=today,
+        status='REJECTED'
+    ).aggregate(
+        count=models.Count('id'),
+        amount=models.Sum('amount')
+    )
+    
+    # Total statistics
+    total_deposits = DepositRequest.objects.aggregate(
+        count=models.Count('id'),
+        amount=models.Sum('amount')
+    )
+    
+    # Pending deposits total
+    pending_deposits = DepositRequest.objects.filter(status='PENDING')
+    total_pending = pending_deposits.aggregate(amount=models.Sum('amount'))['amount'] or 0
+    
+    context = {
+        'deposits': deposits,
+        'total_pending': total_pending,
+        'approved_today_count': approved_today['count'] or 0,
+        'approved_today_amount': approved_today['amount'] or 0,
+        'rejected_today_count': rejected_today['count'] or 0,
+        'rejected_today_amount': rejected_today['amount'] or 0,
+        'total_deposits_count': total_deposits['count'] or 0,
+        'total_deposits_amount': total_deposits['amount'] or 0,
+    }
+    
+    return render(request, 'admins/deposits.html', context)
 
 
 
